@@ -1,0 +1,32 @@
+{
+  "name": "stepScroll",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Duder-onomy/stepScroll",
+  "authors": [
+    "Greg Larrenaga <greg.larrenaga@thinksolid.com>"
+  ],
+  "description": "given a scrollable elememt, will only scroll that element a specific number of pixels each scroll event.",
+  "main": "source/main.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "scroll",
+    "step",
+    "masseuse",
+    "tv",
+    "lg",
+    "solid",
+    "solid",
+    "interactive",
+    "duder-onomy"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
