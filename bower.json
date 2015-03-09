@@ -1,18 +1,17 @@
 {
-  "name": "stepScroll",
+  "name": "scrollToFocused",
   "version": "0.0.0",
-  "homepage": "https://github.com/Duder-onomy/stepScroll",
+  "homepage": "https://github.com/Duder-onomy/scrollToFocused",
   "authors": [
     "Greg Larrenaga <greg.larrenaga@thinksolid.com>"
   ],
-  "description": "given a scrollable elememt, will only scroll that element a specific number of pixels each scroll event.",
+  "description": "given a scrollable elememt, and some focused events, will scroll that focused element into view.",
   "main": "source/main.js",
   "moduleType": [
     "amd"
   ],
   "keywords": [
     "scroll",
-    "step",
     "masseuse",
     "tv",
     "lg",
