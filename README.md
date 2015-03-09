@@ -2,6 +2,10 @@
 
 How to use
 
+```shell
+bower install --save scroll-to-focused
+```
+
 ```javascript
 scrollToFocused.configure({ container : <%= element, or selector %> }).start();
 ```
@@ -15,3 +19,6 @@ config : {
     debounce : 500 // how long do you want to debounce your moveFocusEvent
 }
 ```
+
+MORE DOCS AND EXAMPLES TO COME!
+Writing this to use on a current proj. Will hopefully sit down and flesh stuff out this weekend.
