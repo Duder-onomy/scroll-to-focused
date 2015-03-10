@@ -2,6 +2,10 @@
 
 How to use
 
+```shell
+bower install --save scroll-to-focused
+```
+
 ```javascript
 scrollToFocused.configure({ container : <%= element, or selector %> }).start();
 ```
@@ -16,3 +20,6 @@ config : {
     animate : true // If you want the scroll to animate (provided by Velocity.js)
 }
 ```
+
+MORE DOCS AND EXAMPLES TO COME!
+Writing this to use on a current proj. Will hopefully sit down and flesh stuff out this weekend.
