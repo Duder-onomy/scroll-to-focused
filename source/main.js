@@ -10,7 +10,7 @@ define(['lodash', 'velocity'], function (_, Velocity) {
             config : {
                 container : null,
                 focusedSelector : '.focused',
-                debounce : 500,
+                throttle : 200,
                 moveFocusEvent : 'focus-gained',
                 animate : true
             }
@@ -45,7 +45,7 @@ define(['lodash', 'velocity'], function (_, Velocity) {
     }
 
     function _startWatchingContainerForScrollEvents() {
-        this.private.config.container.addEventListener('focus-gained', _.debounce(_scrollToFocusedElement.bind(this), this.private.config.debounce, true));
+        this.private.config.container.addEventListener('focus-gained', _.throttle(_scrollToFocusedElement.bind(this), this.private.config.throttle));
     }
 
     function _scrollToFocusedElement() {
