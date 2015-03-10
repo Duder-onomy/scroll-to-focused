@@ -11,7 +11,8 @@ define(['lodash', 'velocity'], function (_, Velocity) {
                 container : null,
                 focusedSelector : '.focused',
                 debounce : 500,
-                moveFocusEvent : 'focus-gained'
+                moveFocusEvent : 'focus-gained',
+                animate : true
             }
         },
         windowDimensions : {
@@ -44,7 +45,7 @@ define(['lodash', 'velocity'], function (_, Velocity) {
     }
 
     function _startWatchingContainerForScrollEvents() {
-        this.private.config.container.addEventListener('focus-gained', _.debounce(_scrollToFocusedElement.bind(this), this.private.config.debounce));
+        this.private.config.container.addEventListener('focus-gained', _.debounce(_scrollToFocusedElement.bind(this), this.private.config.debounce, true));
     }
 
     function _scrollToFocusedElement() {
@@ -52,18 +53,26 @@ define(['lodash', 'velocity'], function (_, Velocity) {
             focusedElementsBoundingRect = focusedElement.getBoundingClientRect();
 
         if(focusedElementsBoundingRect.left < this.private.windowDimensions.left) { // focus is off the left side of window
-            Velocity(focusedElement, 'scroll', {
-                container : this.private.config.container,
-                axis : 'x',
-                offset : focusedElementsBoundingRect.width / 2 * -1
-            });
+            if(this.private.config.animate) {
+                Velocity(focusedElement, 'scroll', {
+                    container : this.private.config.container,
+                    axis : 'x',
+                    offset : focusedElementsBoundingRect.width / 2 * -1
+                });
+            } else {
+                this.private.config.container.scrollLeft = this.private.config.container.scrollLeft - Math.abs(this.private.windowDimensions.left - focusedElementsBoundingRect.left) - focusedElementsBoundingRect.width / 2;
+            }
         }
         if(focusedElementsBoundingRect.right > this.private.windowDimensions.right) { // focus is off the right side of window
-            Velocity(focusedElement, 'scroll', {
-                container : this.private.config.container,
-                axis : 'x',
-                offset : (this.private.windowDimensions.width - focusedElementsBoundingRect.width * 1.5) * -1
-            });
+            if(this.private.config.animate) {
+                Velocity(focusedElement, 'scroll', {
+                    container : this.private.config.container,
+                    axis : 'x',
+                    offset : (this.private.windowDimensions.width - focusedElementsBoundingRect.width * 1.5) * -1
+                });
+            } else {
+                this.private.config.container.scrollLeft = this.private.config.container.scrollLeft + Math.abs(this.private.windowDimensions.width - focusedElementsBoundingRect.right) + focusedElementsBoundingRect.width / 2;
+            }
         }
     }
 
